@@ -1,4 +1,5 @@
 import os
+import uvicorn
 import tensorflow.lite as tflite
 import numpy as np
 from fastapi import FastAPI
@@ -60,8 +61,11 @@ async def predict(request: ImageInput):
     except Exception as e:
         return {"error": str(e)}
 
-# Ensure correct port assignment for Railway
+@app.get("/")
+def read_root():
+    return {"message": "Hello, Render!"}
+
+# Run the app with dynamic port for Render
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 8000))  # Use Railway's dynamic port
-    import uvicorn
+    port = int(os.getenv("PORT", 8000))  # Use Render's assigned port
     uvicorn.run(app, host="0.0.0.0", port=port)
