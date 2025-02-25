@@ -69,3 +69,9 @@ def read_root():
 if __name__ == "__main__":
     port = int(os.getenv("PORT", 8000))  # Use Render's assigned port
     uvicorn.run(app, host="0.0.0.0", port=port)
+
+import os
+
+PORT = int(os.getenv("PORT", 8000))  # Read the PORT from Render
+MODEL_PATH = os.getenv("MODEL_PATH", "model.tflite")  # Default model path
+
