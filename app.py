@@ -62,6 +62,6 @@ async def predict(request: ImageInput):
 
 # Ensure correct port assignment for Railway
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 8000))  # Railway assigns a dynamic port
+    port = int(os.environ.get("PORT", 8000))  # Use Railway's dynamic port
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=port)
