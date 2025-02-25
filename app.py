@@ -74,4 +74,14 @@ import os
 
 PORT = int(os.getenv("PORT", 8000))  # Read the PORT from Render
 MODEL_PATH = os.getenv("MODEL_PATH", "model.tflite")  # Default model path
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allow all origins (change to specific domain in production)
+    allow_credentials=True,
+    allow_methods=["*"],  # Allow all methods (GET, POST, etc.)
+    allow_headers=["*"],  # Allow all headers
+)
+
 
